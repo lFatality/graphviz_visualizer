@@ -1,0 +1,27 @@
+# WARNING: make sure you edit the template file with the .j2 ending.
+# Do not edit the generated file with the .dot ending, it will be overwritten!
+
+digraph finite_state_machine {
+	rankdir=LR;
+  
+	# define all nodes first
+	State0 [shape = circle color="" style=""];
+	State1 [shape = circle color="" style=""];
+	State2 [shape = circle color="" style=""];
+	State3 [shape = circle color="" style=""];
+	State4 [shape = circle color="" style=""];
+	State5 [shape = circle color="" style=""];
+	State6 [shape = circle color="" style=""];
+	
+	# add changing value after the definition, otherwise the node order can be
+	# affected which can lead to different graph structures depending on the active state
+	{{active_state}} [color="darkorange" style="filled"];
+
+	# relationships
+	State0 -> State2 [ label = "Transition 1" ];
+	State0 -> State1 [ label = "Transition 2" ];
+	State1 -> State3 [ label = "Transition 3" ];
+	State2 -> State6 [ label = "Transition 4" ];
+	State2 -> State5 [ label = "Transition 5" ];
+	State2 -> State4 [ label = "Transition 6" ];
+}

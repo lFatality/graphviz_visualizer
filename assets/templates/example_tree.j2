@@ -1,0 +1,40 @@
+digraph ""
+   {
+#   node [fontsize=10,width="1", height="1", margin=0];
+#   graph[fontsize=8];
+   ratio = "auto" ;
+   #label="my tree"
+   splines="line"
+
+   #node [fontname = "Computer Modern"];
+
+   # entities
+   # decorators
+   root [label="", shape="point"] ;
+   seq1 [label="→*" shape="box" regular=1] ;
+   seq2 [fontname="Computer Modern" label="→*" shape="box" regular=1] ;
+   fb1 [label="?" shape="box" regular=1] ;
+   # conditions
+   ghost_close [label="Ghost Close"] ;
+   ghost_scared [label="Ghost Scared"] ;
+   # actions
+   eat_pills [label="Eat pills" shape="box"] ;
+   chase_ghost [label="Chase\nghost" shape="box"] ;
+   avoid_ghost [label="Avoid ghost" shape="box"] ;
+
+   # add changing value after the definition, otherwise the node order can be
+	# affected which can lead to different graph structures depending on the active state
+	{{active_state}} [color="" fillcolor="darkorange" style="filled"];
+
+   # relationships
+   root ;
+   root -> seq1:n [dir="none"];
+   root -> eat_pills:n [dir="none"];
+   seq1:s -> fb1:n [dir="none"];
+   seq1:s -> ghost_close:n [dir="none"];
+   fb1:s -> seq2:n [dir="none"];
+   seq2:s -> ghost_scared:n [dir="none"];
+   seq2:s -> chase_ghost:n [dir="none"];
+   fb1:s -> avoid_ghost:n [dir="none"];
+
+   }

@@ -1,0 +1,19 @@
+# IMPORTANT: after changing this file, you have to build the workspace again. otherwise the params are not updated.
+graphviz_visualizer_node: # same node name specified in launch file
+  ros__parameters:
+    graphs:
+      names: [
+        'high_level_fsm',
+        'locomotion',
+        'example_graph',
+        'example_tree']
+      initial_states: [
+        'Init',
+        'NoDataYet',
+        'State0',
+        'chase_ghost']
+      dotfile_template_paths: [
+        'assets/templates/task_management_fsm.j2',
+        'assets/templates/task_management_fsm.j2',
+        'assets/templates/example_graph.j2',
+        'assets/templates/example_tree.j2']

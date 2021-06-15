@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>graphviz_visualizer</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="fynn-boyer@web.de">fynn</maintainer>
+  <license>TODO: License declaration</license>
+
+  <depend>graphviz_visualizer_interfaces</depend>
+
+  <depend>python3-pydot</depend>
+  <depend>python3-qt5-bindings</depend>
+  <depend>python3-jinja2</depend>
+  <depend>python3-pyside2.qtuitools</depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

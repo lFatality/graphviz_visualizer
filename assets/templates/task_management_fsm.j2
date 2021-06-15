@@ -1,0 +1,67 @@
+# WARNING: make sure you edit the template file with the .j2 ending.
+# Do not edit the generated file with the .dot ending, it will be overwritten!
+
+digraph finite_state_machine {
+	#rankdir=LR;
+	#layout=neato
+	page="9,9";
+	size="9,9";
+	ratio=fill;
+	center=1;
+	compound=true;
+	# define all nodes first
+	SystemRecovery [shape = box color="" style=""];
+
+    subgraph cluster_nominal {
+        label = "Nominal"
+        
+        TeleOp [shape = box color="" style=""];
+        
+        subgraph cluster_autonomy {
+            label = "Autonomy"
+            Init [shape = box color="" style=""];
+            Idle [shape = box color="" style=""];
+            DrivingHome [shape = box color="" style=""];
+            
+            subgraph cluster_mission_execution {
+        	    label = "Mission Execution"
+
+		        Explore [shape = box color="" style=""];
+		        DesignatedDrive [shape = box color="" style=""];
+		        Manipulate [shape = box color="" style=""];
+		        Experiment [shape = box color="" style=""];
+	        }
+        }
+    }
+
+	#{rank=same; Idle Explore Approach;}
+	#{rank=same; PickUp Store ReturnHome;}
+
+	# add changing value after the definition, otherwise the node order can be
+	# affected which can lead to different graph structures depending on the active state
+	{{active_state}} [color="" fillcolor="darkorange" style="filled"];
+
+	# relationships (start nodes sorted alphabetically)
+	DesignatedDrive -> Idle [ ltail =cluster_mission_execution, label = "" ];
+	DesignatedDrive -> Explore [ label = "" ];
+	DesignatedDrive -> Manipulate [ label = "" ];
+	DesignatedDrive -> Experiment [ label = "" ];
+	DrivingHome -> Idle [ label = ""];
+	Explore -> DesignatedDrive [ label = "" ];
+	Explore -> Manipulate [ label = "" ];
+	Explore -> Experiment [ label = "" ];
+	Experiment -> DrivingHome [ ltail = cluster_mission_execution label = "" ];
+	Experiment -> Explore  [ label = "" ];
+	Experiment -> DesignatedDrive  [ label = "" ];
+	Idle -> DesignatedDrive [ lhead = cluster_mission_execution, label = "" ];
+	Idle -> SystemRecovery [ ltail = cluster_nominal, label = ""]
+	Idle -> DrivingHome [ ltail = cluster_nominal, label = ""]
+	Init -> Idle [ label = ""];
+	Init -> TeleOp [ ltail = cluster_autonomy, label = ""]
+	Manipulate -> DesignatedDrive  [ label = "" ];
+	Manipulate -> Explore  [ label = "" ];
+	SystemRecovery -> Idle [ lhead = cluster_nominal, label = ""];
+	TeleOp -> Init [ lhead = cluster_autonomy, label = ""];
+	
+	
+}
