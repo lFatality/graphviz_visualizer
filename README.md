@@ -86,4 +86,4 @@ Graphviz is a graph visualization software that converts text files in which a g
 
 ## Further notes
 
-* Tested with ROS 2 Foxy
+* Tested with ROS 2 Foxy, PySide2 5.15.1, pydot 1.4.1, Jinja2 2.11.2, Graphviz 2.43.0 (0)
