@@ -1,3 +1,7 @@
+# example tree from the book
+# "Behavior Trees in Robotics and AI"
+# by Michele Colledanchise and Petter Ögren
+
 digraph ""
    {
 #   node [fontsize=10,width="1", height="1", margin=0];
@@ -9,14 +13,16 @@ digraph ""
    #node [fontname = "Computer Modern"];
 
    # entities
-   # decorators
-   root [label="", shape="point"] ;
-   seq1 [label="→*" shape="box" regular=1] ;
-   seq2 [fontname="Computer Modern" label="→*" shape="box" regular=1] ;
-   fb1 [label="?" shape="box" regular=1] ;
    # conditions
    ghost_close [label="Ghost Close"] ;
    ghost_scared [label="Ghost Scared"] ;
+   
+   # decorators
+   root [label="", shape="point"] ;
+   seq1 [label="→" shape="box" regular=1] ;
+   seq2 [label="→" shape="box" regular=1] ;
+   fb1 [label="?" shape="box" regular=1] ;
+   
    # actions
    eat_pills [label="Eat pills" shape="box"] ;
    chase_ghost [label="Chase\nghost" shape="box"] ;
